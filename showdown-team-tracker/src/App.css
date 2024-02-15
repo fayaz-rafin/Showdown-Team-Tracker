@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Nintendo-DS-BIOS';
+    src: url('../src/fonts/Nintendo-DS-BIOS.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'SF-Pixelate';
+    src: url('../src/fonts/SF\ Pixelate.ttf') format('truetype');
+}
+
+body {
+    font-family: 'SF-Pixelate', sans-serif;
+}
+
+.App-header{
+    display: flex;
+    justify-content:center;
+}
+
