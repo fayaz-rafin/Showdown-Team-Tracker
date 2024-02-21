@@ -1,17 +1,22 @@
 import './App.css';
 import { Input } from '@chakra-ui/react'
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from "./Navbar";
+import Home from "./Home";
 
 function App() {
   return (
+    
     <div className="App">
       <header className="App-header">
-        <a href="https://pokemondb.net/pokedex/rhydon"><img className="rhydon" src="https://img.pokemondb.net/sprites/black-white/normal/rhydon-f.png" alt="Rhydon"></img></a>
-        <h1>Welcome to Showdown Team Tracker!</h1>
-        <div className="body">
-          <Input variant='flushed' placeholder='Paste your team here' />
-          <button class="button">Button</button>
-        </div>
+        <Router>
+          <Navbar />
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </main>
+        </Router>
       </header>
       <body>
         
