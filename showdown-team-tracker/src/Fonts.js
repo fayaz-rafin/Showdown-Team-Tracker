@@ -5,7 +5,7 @@ const Fonts = () => (
         styles={`
          @font-face {
             font-family: 'SF-Pixelate';
-            src: url('../src/fonts/SF\ Pixelate.ttf') format('truetype');
+            src: url('/Users/hasanimam/Desktop/react apps/Showdown-Team-Tracker/showdown-team-tracker/src/fonts/SF Pixelate Oblique.ttf') format('truetype');
         }
        `}
     />

@@ -46,14 +46,10 @@ const Navbar = () => {
                                 to="/location"
                                 className="nav__link"
                             >
-                                Location
+                                Format
                             </NavLink>
                         </li>
-                        <li className="nav__item">
-                            <NavLink to="/get-started" className="nav__link nav__cta">
-                                Get Started
-                            </NavLink>
-                        </li>
+                        
                     </ul>
                 </div>
             </nav>

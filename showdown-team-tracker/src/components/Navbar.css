@@ -46,12 +46,9 @@
     gap: 20px;
 }
 
-.nav__link {
-    
-}
 
 .nav__link:hover {
-    color: blue;
+    color: rgb(0, 0, 0);
 }
 
 .nav__close {

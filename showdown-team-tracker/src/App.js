@@ -1,12 +1,14 @@
-import './App.css';
-import { Input } from '@chakra-ui/react'
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from "./Navbar";
-import Home from "./Home";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
 
 function App() {
+  useEffect(() => {
+    document.title = 'Showdown Team Tracker';
+  }, []);
   return (
-    
+
     <div className="App">
       <header className="App-header">
         <Router>
@@ -18,10 +20,9 @@ function App() {
           </main>
         </Router>
       </header>
-      <body>
-        
-
-      </body>
+    <body>
+      
+    </body>
     </div>
   );
 }
