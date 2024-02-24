@@ -1,0 +1,8 @@
+Talonflame @ Flyinium Z
+Ability: Gale Wings
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Brave Bird
+- Flare Blitz
+- Swords Dance
+- Roost

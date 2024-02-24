@@ -9,7 +9,7 @@ function App() {
   }, []);
   return (
 
-    <div className="App">
+    <div class="App">
       <header className="App-header">
         <Router>
           <Navbar />
