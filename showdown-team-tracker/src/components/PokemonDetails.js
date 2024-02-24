@@ -1,18 +1,25 @@
 // PokemonDetails.js
 import React, { useState } from 'react';
-//import fs from 'fs'; // Assuming you are using Node.js environment
+import axios from 'axios';
 
 function textToJSON(text) {
+    if (!text) {
+        console.error('Input text is undefined or null.');
+        return '{}'; // Return an empty JSON object as a default
+    }
+
     const lines = text.split('\n');
-    const pokemonData = {};
+    const pokemonData = {
+        moves: [] // Initialize moves as an empty array
+    };
 
     // Extract Pokemon name from the first line
     const firstLineParts = lines[0].split('@');
-    pokemonData.pokemon = firstLineParts[0].trim();
+    pokemonData.pokemon = firstLineParts[0]?.trim() || 'Unknown Pokemon';
 
     lines.slice(1).forEach(line => {
         const parts = line.split(':');
-        const key = parts[0].trim();
+        const key = parts[0]?.trim();
         const value = parts[1] ? parts[1].trim() : '';
 
         if (key === 'Ability') {
@@ -21,10 +28,10 @@ function textToJSON(text) {
             pokemonData.evs = value;
         } else if (key === 'Nature') {
             pokemonData.nature = value;
-        } else if (key.startsWith('-')) {
-            pokemonData.moves = pokemonData.moves || [];
+        } else if (key && key.startsWith('-')) {
             pokemonData.moves.push(key.trim().substring(1));
-        } else {
+        } else if (key) {
+            // Handle other properties dynamically
             pokemonData[key.toLowerCase()] = value;
         }
     });
@@ -32,13 +39,22 @@ function textToJSON(text) {
     return JSON.stringify(pokemonData, null, 2);
 }
 
-function PokemonDetails({ inputText }) {
+function PokemonDetails() {
+    const [inputText, setInputText] = useState('');
     const [pokemonJson, setPokemonJson] = useState('');
 
     const generateJson = () => {
         const jsonOutput = textToJSON(inputText);
         setPokemonJson(jsonOutput);
-        // If you want to save to a file in the client-side, you'll need to handle it differently (e.g., using Blob).
+
+        // Send the JSON data to the backend
+        axios.post('http://localhost:3001/api/pokemon', JSON.parse(jsonOutput))
+            .then(response => {
+                console.log('Server response:', response.data);
+            })
+            .catch(error => {
+                console.error('Error sending data to server:', error.message);
+            });
     };
 
     return (
@@ -48,7 +64,7 @@ function PokemonDetails({ inputText }) {
                 rows="10"
                 cols="50"
                 value={inputText}
-                onChange={(e) => setPokemonJson(e.target.value)}
+                onChange={(e) => setInputText(e.target.value)}
             />
             <button onClick={generateJson}>Generate JSON</button>
             {pokemonJson && (
