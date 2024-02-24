@@ -1,16 +1,8 @@
 import React from "react";
 import "./Home.css";
 import { Input } from '@chakra-ui/react'
-// use Axios
-import axios from 'axios';
-//create a function to make an api request to the pokemon api
+import PokemonDetails from "../components/PokemonDetails";
 
-
- const getPokemon = async () => {
-    const response = await fetch('https://pokeapi.co/api/v2/pokemon/rhydon');
-    const data = await response.json();
-    console.log(data);
-  }
 
 
 const Home = () => {
@@ -23,6 +15,7 @@ const Home = () => {
             <div className="body">
                 <Input variant='flushed' placeholder='Paste your team here' />
                 <button class="button">View Team</button>
+                <PokemonDetails />  
             </div>        
         </div>
     );
