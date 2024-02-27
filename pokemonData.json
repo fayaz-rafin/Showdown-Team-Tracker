@@ -1,0 +1,12 @@
+{
+  "pokemon": "Charizard",
+  "ability": "Blaze",
+  "evs": "252 SpA / 4 SpD / 252 Spe",
+  "timid nature": "",
+  "moves": [
+    " Fire Blast",
+    " Air Slash",
+    " Solar Beam",
+    " Focus Blast"
+  ]
+}
