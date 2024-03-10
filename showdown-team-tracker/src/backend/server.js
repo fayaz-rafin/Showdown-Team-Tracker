@@ -16,6 +16,7 @@ function convertShowdownToSQLite(showdownData) {
     CREATE TABLE IF NOT EXISTS pokemon (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT,
+      item, TEXT,
       ability TEXT,
       evs TEXT,
       nature TEXT,
@@ -31,7 +32,7 @@ function convertShowdownToSQLite(showdownData) {
             moves: []
         };
 
-        pokemonData.name = lines[0]?.trim() || 'Unknown Pokemon';
+        pokemonData.name = lines[0]?.trim();
 
         lines.slice(1).forEach(line => {
             const parts = line.split(':');
